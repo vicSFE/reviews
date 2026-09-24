@@ -1258,3 +1258,51 @@ img {
 .cyber-options button.wrong {
   cursor: default;
 }
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2ea44f, #6cc644);
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.topic-item {
+  position: relative;
+}
+
+.topic-check {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #2ea44f;
+}
+
+.topic-item:has(.topic-check:checked) {
+  opacity: 0.6;
+}
+
+.topic-item:has(.topic-check:checked) .topic-text {
+  text-decoration: line-through;
+}
