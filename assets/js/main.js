@@ -75,3 +75,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const STORAGE_KEY = 'github-lessen-voortgang';
+  const checkboxes = document.querySelectorAll('.topic-check');
+  const fill = document.getElementById('progressBarFill');
+  const label = document.getElementById('progressLabel');
+
+  if (!checkboxes.length) return;
+
+  function laadVoortgang() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function bewaarVoortgang(data) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch {
+      // opslag niet beschikbaar, negeren
+    }
+  }
+
+  function updateBalk() {
+    const totaal = checkboxes.length;
+    const voltooid = document.querySelectorAll('.topic-check:checked').length;
+    const percentage = Math.round((voltooid / totaal) * 100);
+    fill.style.width = percentage + '%';
+    label.textContent = `${voltooid}/${totaal} voltooid`;
+  }
+
+  const voortgang = laadVoortgang();
+  checkboxes.forEach(cb => {
+    const id = cb.dataset.topic;
+    cb.checked = !!voortgang[id];
+
+    cb.addEventListener('change', () => {
+      voortgang[id] = cb.checked;
+      bewaarVoortgang(voortgang);
+      updateBalk();
+    });
+  });
+
+  updateBalk();
+});
