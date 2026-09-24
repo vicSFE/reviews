@@ -1111,3 +1111,135 @@ img {
     font-size: 25px;
   }
 }
+
+/* =========================
+   CYBER CHALLENGE
+========================= */
+
+.cyber-challenge-card {
+  margin-top: 35px;
+  padding: 30px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f4f7ff, #ffffff);
+  border: 1px solid rgba(0, 80, 180, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cyber-challenge-icon {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: white;
+  font-size: 31px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.cyber-challenge-content {
+  flex: 1;
+}
+
+.cyber-challenge-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #1677ff;
+}
+
+.cyber-challenge-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+
+.cyber-challenge-content > p {
+  margin: 0 0 22px;
+  line-height: 1.7;
+  color: #5d6673;
+}
+
+.cyber-question {
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.cyber-question strong {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.cyber-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cyber-options button {
+  padding: 11px 16px;
+  border: 1px solid #d9e0ea;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font: inherit;
+  transition: 0.2s ease;
+}
+
+.cyber-options button:hover {
+  transform: translateY(-2px);
+  border-color: #1677ff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.cyber-answer {
+  margin-top: 16px;
+  padding: 15px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-radius: 12px;
+  background: #eef8f1;
+  border: 1px solid #cde8d5;
+}
+
+.cyber-answer span {
+  font-size: 20px;
+}
+
+.cyber-answer p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+/* Mobiele versie */
+@media (max-width: 600px) {
+
+  .cyber-challenge-card {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .cyber-challenge-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+  }
+
+  .cyber-options {
+    flex-direction: column;
+  }
+
+  .cyber-options button {
+    width: 100%;
+    text-align: left;
+  }
+
+}
