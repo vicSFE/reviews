@@ -1,0 +1,1043 @@
+/* ==========================================================================
+   SINT-FRANCISCUS EVERGEM - 5 ICW (HARDWARE)
+   Website Intermezzo's 5 Hardware - Mockup & Functioneel Design
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+
+/* --- 2. Kleurenpallet & Variabelen --- */
+:root {
+  --primary: #083D91;          /* Donkerblauw */
+  --primary-dark: #052968;
+  --primary-deep: #061c3d;
+  --primary-light: #1254bf;
+  --secondary: #00A3A3;        /* Teal */
+  --secondary-hover: #008787;
+  --secondary-light: #e0f7f7;
+  --accent: #F4B400;           /* Geel */
+  --accent-hover: #dc9f00;
+  --bg-page: #F8FAFC;          /* Lichtgrijs */
+  --text-main: #1F2937;        /* Donkergrijs */
+  --text-muted: #4B5563;
+  --text-light: #9CA3AF;
+  --white: #FFFFFF;
+  --border: #E2E8F0;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --card-hover-shadow: 0 10px 25px rgba(8, 61, 145, 0.12);
+  --header-bg: #062863;
+  --footer-bg: #062863;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Reset & Basis --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Checklist: Geen horizontale scrollbar */
+}
+
+/* --- 3. Typografie --- */
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Containers & Layout --- */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+/* --- 4. Componenten & Knoppen --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 11px 24px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+/* Primaire knop (Donkerblauw) */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 2px solid var(--primary);
+}
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(8, 61, 145, 0.25);
+}
+
+/* Secundaire knop (Teal border & tekst) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background-color: var(--secondary);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 163, 163, 0.2);
+}
+
+/* Accent knop (Geel, gebruikt in Home Hero) */
+.btn-accent {
+  background-color: var(--accent);
+  color: #111827;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 14px rgba(244, 180, 0, 0.35);
+}
+
+.btn-accent:hover, .btn-accent:focus-visible {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(244, 180, 0, 0.45);
+}
+
+/* --- Header & Navigatie --- */
+.site-header {
+  background-color: var(--header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* Logo & School Branding */
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+}
+
+.brand-logo-img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7dd3fc;
+  letter-spacing: 0.3px;
+}
+
+/* Nav Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-link {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigatie (actief) */
+.nav-link.active {
+  color: var(--white);
+  background-color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+/* Header Acties (Zoekknop) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-toggle-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-toggle-btn:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Search Dropdown / Bar */
+.search-bar-container {
+  display: none;
+  background-color: #051d45;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-bar-container.open {
+  display: block;
+  animation: slideDown 0.25s ease;
+}
+
+.search-input-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 10px 42px 10px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 15px;
+  outline: none;
+}
+
+.search-input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.search-input-wrapper input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--secondary);
+}
+
+.search-close-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-results-box {
+  max-width: 600px;
+  margin: 8px auto 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: none;
+}
+
+.search-results-box a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.search-results-box a:hover {
+  background-color: var(--secondary-light);
+  color: var(--primary);
+}
+
+/* --- Hero Sectie (Home) --- */
+.hero-home {
+  background: linear-gradient(135deg, #051d45 0%, #083D91 60%, #062863 100%);
+  color: var(--white);
+  padding: 56px 0 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 163, 163, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(8, 61, 145, 0.25) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-title {
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  color: #93c5fd;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 28px;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+/* Hero Visual & Keywords (Home) */
+.hero-visual-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+.hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 440px;
+}
+
+.hero-image-frame img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.hero-image-frame:hover img {
+  transform: scale(1.03);
+}
+
+.hero-keywords {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+}
+
+.hero-keywords span {
+  transition: color 0.2s, transform 0.2s;
+}
+
+.hero-keywords span:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* --- Subpagina Hero (Mitnick, GitHub, Nokia) --- */
+.page-hero {
+  background: linear-gradient(135deg, #051d45 0%, #083D91 70%, #062863 100%);
+  color: var(--white);
+  padding: 44px 0 48px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--secondary);
+}
+
+.page-hero-title {
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.page-hero-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #7dd3fc;
+  font-style: italic;
+}
+
+/* --- Kaarten Sectie (Home) --- */
+.section-cards {
+  padding: 64px 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: #cbd5e1;
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.card-text {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: auto;
+}
+
+.card-link:hover {
+  color: var(--secondary);
+  transform: translateX(3px);
+}
+
+/* --- Quote Sectie (Home) --- */
+.section-quote {
+  padding: 48px 0 64px 0;
+  background-color: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.quote-box {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-icon {
+  font-size: 48px;
+  color: #94a3b8;
+  line-height: 1;
+  opacity: 0.5;
+  font-family: Georgia, serif;
+}
+
+.quote-text {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.5;
+  margin: 12px 0 16px 0;
+}
+
+.quote-author {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.quote-divider {
+  width: 64px;
+  height: 4px;
+  background-color: var(--secondary);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* --- Detailpagina's Layout (Mitnick, GitHub, Nokia) --- */
+.detail-section {
+  padding: 56px 0;
+}
+
+.detail-split-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+.detail-text h2 {
+  margin-bottom: 16px;
+}
+
+.detail-media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+}
+
+.detail-media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+/* Mitnick: Wall of Fame */
+.wall-of-fame-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  padding: 32px;
+  max-width: 720px;
+}
+
+.wall-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--bg-page);
+}
+
+.wall-icon {
+  font-size: 28px;
+}
+
+.wall-header h3 {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.wall-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wall-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-page);
+  border-left: 4px solid var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.wall-item:hover {
+  transform: translateX(4px);
+  background-color: #f1f5f9;
+}
+
+.wall-year {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  width: 90px;
+}
+
+.wall-names {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* GitHub: Onderwerpen Grid (Numbered 1-8) */
+.topics-section h3 {
+  font-size: 24px;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 24px;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.topic-item:hover {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 163, 163, 0.12);
+}
+
+.topic-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.topic-text {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Nokia: Info Details List/Cards */
+.nokia-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.nokia-info-card {
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.25s ease;
+}
+
+.nokia-info-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: var(--card-hover-shadow);
+}
+
+.nokia-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--secondary-light);
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nokia-info-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nokia-info-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.nokia-info-content p {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* --- 7. Footer (op alle pagina's) --- */
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--white);
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.footer-brand-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.footer-brand-sub {
+  font-size: 11px;
+  color: #93c5fd;
+}
+
+.footer-slogan {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-link {
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.social-link:hover {
+  color: var(--secondary);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* --- 6. Responsief Design (Desktop, Tablet, Mobiel) --- */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: left;
+  }
+
+  .hero-visual-wrapper {
+    justify-content: flex-start;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nokia-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .header-inner {
+    height: 64px;
+  }
+
+  /* Hamburger navigation */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background-color: var(--header-bg);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px 24px 20px;
+    border-bottom: 2px solid var(--secondary);
+    gap: 10px;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-menu.open {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+    width: 100%;
+    border-radius: var(--radius-sm);
+  }
+
+  .hero-home {
+    padding: 36px 0 44px 0;
+  }
+
+  .hero-desc {
+    max-width: 100%;
+  }
+
+  .hero-visual-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-keywords {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .detail-split-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+
+/* Animatie */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
