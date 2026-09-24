@@ -1041,3 +1041,73 @@ img {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.nokia-fun-card {
+  margin-top: 35px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eef7ff, #ffffff);
+  border: 1px solid rgba(0, 100, 200, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-fun-card::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 120, 255, 0.08);
+  right: -40px;
+  top: -40px;
+}
+
+.nokia-fun-icon {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #fff;
+  font-size: 32px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.nokia-fun-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #1677ff;
+}
+
+.nokia-fun-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.nokia-fun-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #5d6673;
+}
+
+@media (max-width: 600px) {
+  .nokia-fun-card {
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .nokia-fun-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+  }
+}
