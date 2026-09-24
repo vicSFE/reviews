@@ -1243,3 +1243,18 @@ img {
   }
 
 }
+
+.cyber-options button.correct {
+  border-color: #2e9d55;
+  background: #eaf8ef;
+}
+
+.cyber-options button.wrong {
+  border-color: #d9534f;
+  background: #fff0ef;
+}
+
+.cyber-options button.correct,
+.cyber-options button.wrong {
+  cursor: default;
+}
