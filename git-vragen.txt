@@ -1,0 +1,51 @@
+1: VicSFE: git blame nokia.html
+2: 963df4789a64f311c4f5f3562798572e9ad5bd00 git log --diff-filter=A --follow -- nokia.html
+3:
+ README.md                        |    2 -
+ assets/css/style.css             | 1043 ++++++++++++++++++++++++++++++++++++++
+ assets/images/github-badge.svg   |   17 +
+ assets/images/github-card.svg    |   22 +
+ assets/images/github-hero.jpg    |  Bin 0 -> 656717 bytes
+ assets/images/hero-home.jpg      |  Bin 0 -> 732187 bytes
+ assets/images/logo.svg           |   17 +
+ assets/images/mitnick-hacker.jpg |  Bin 0 -> 762323 bytes
+ assets/images/mitnick-lock.jpg   |  Bin 0 -> 719705 bytes
+ assets/images/nokia-building.jpg |  Bin 0 -> 966344 bytes
+ assets/images/nokia-tower.jpg    |  Bin 0 -> 821379 bytes
+ assets/js/main.js                |   77 +++
+ assets/media/README.md           |    2 +
+ css/styles.css                   |    0
+ github.html                      |  161 ++++++
+ images/fortnite.png              |  Bin 75394 -> 0 bytes
+ index.html                       |  194 +++++++
+ mitnick.html                     |  144 ++++++
+ nokia.html                       |  170 +++++++
+ pages/index.html                 |    0
+ 20 files changed, 1847 insertions(+), 2 deletions(-)
+git show --stat 963df4789a64f311c4f5f3562798572e9ad5bd00
+4:
+*   9dd6d02 (HEAD -> main, origin/main, origin/HEAD) Merge pull request #5 from vicSFE/feature-github
+|\  
+| * 66c85d5 (origin/feature-github, feature-github) feat(Voeg .gitignore toe om notes.txt en test/ te negeren)
+* | d92b7ee Merge pull request #4 from vicSFE/feature-github
+|\| 
+| * dcafc5e feat(alles is al gedaan hier)
+* | 1adf5a1 Merge pull request #3 from vicSFE/feature-mitnick
+|\| 
+| * 3fa52aa (origin/feature-mitnick, feature-mitnick) feat(quiz gemaakt)
+| * 9db2eba feat(een challenge)
+* | f14670e Merge pull request #2 from vicSFE/feature-nokia
+|\| 
+| * 6d4ad31 (origin/feature-nokia, feature-nokia) feat(een nieuw wistjedatje)
+| * cf39715 feat(Een leuk wistjedatje)
+|/  
+* 963df47 feat(Tweede grote push nadat de opdracht is veranderd)
+| * 5fecab4 (origin/developer) hopelijk werkt dit
+| * 157f73b alles weggedaan
+| * d40be38 (developer) feat(eerste echte grote push)
+|/  
+* 67f0f12 feat(images/fortnite.png)
+* eaf31c7 feat(baseplan added)
+* bb18dc5 Initial commit
+git log --all --graph --oneline --decorate
+5: bij een normale merge hou je alle commits over en push je die en bij een squash merge zorg je ervoor dat je alles compressed en 1 commit doet en merged.
